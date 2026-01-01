@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package version="3.0" unique-identifier="KSBN" prefix="rendition: http://www.idpf.org/vocab/rendition/#" xmlns="http://www.idpf.org/2007/opf">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="rendition:layout">pre-paginated</meta>
+    <meta property="rendition:spread">landscape</meta>
+    <meta name="book-type" content="comic" />
+    <meta name="zero-gutter" content="true" />
+    <meta name="zero-margin" content="true" />
+    <meta name="RegionMagnification" content="true" />
+    <meta name="fixed-layout" content="true" />
+    <meta name="orientation-lock" content="portrait" />
+    <meta name="primary-writing-mode" content="horizontal-rl" />
+    <meta name="original-resolution" content="960x1280" />
+    <dc:identifier id="KSBN" opf:scheme="KSBN">{KSBN_ID}</dc:identifier>
+    <dc:title>{Title}</dc:title>
+    <dc:language>zh-CN</dc:language>
+    <dc:creator>{author}</dc:creator>
+    <dc:publisher>{publisher}</dc:publisher>
+    <dc:date>{date}</dc:date>
+    <dc:rights>{rights}</dc:rights>
+    <dc:series>{series}</dc:series>
+    <dc:seriesid />
+    <dc:number>{number}</dc:number>
+    <meta name="cover" content="cover_img" />
+  </metadata>
+  <manifest>
+    <item id="ncx" href="xml/vol.ncx" media-type="application/x-dtbncx+xml"/>
+{manifest_page_main}
+{manifest_page_img}
+    <item id="css" href="css/style.css" media-type="text/css"/>
+    <item id="sgc-nav.css" href="css/sgc-nav.css" media-type="text/css"/>
+    <item id="nav.xhtml" href="html/nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+  </manifest>
+  <spine page-progression-direction="rtl" toc="ncx">
+{spine_page_main}
+    <itemref idref="nav.xhtml" linear="no"/>
+  </spine>
+  <guide>
+    <reference type="cover" title="封面" href="image/cover.{file_ext}"/>
+  </guide>
+</package>

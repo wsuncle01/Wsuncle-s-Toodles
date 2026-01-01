@@ -8,9 +8,11 @@ import pdb
 import shutil
 import uuid
 from datetime import datetime
+from PIL import Image
 
 # print(os.getcwd())
-img_ext = ['.webp','.bmp','.jpeg','.jpg','.png']
+img_ext:list = ['.webp','.bmp','.jpeg','.jpg','.png']
+quality:int = 20
 
 #path
 OUTFILE_PATH = "./output"
@@ -179,9 +181,11 @@ def dump_img_cov(img_path:str,
                  file_ext:str) -> None:
     if not os.path.exists(img_path):
         os.mkdir(img_path)
-    open(img_path + f"/cover.{file_ext}","wb").write(
-        open(input_path,"rb").read()
-    )   
+    # open(img_path + f"/cover.{file_ext}","wb").write(
+    #     open(input_path,"rb").read()
+    # )   
+    img = Image.open(input_path)
+    img.save(img_path + f"/cover.{file_ext}", quality=quality)
 
 def dump_img(img_path:str,
              input_path:str,
@@ -189,9 +193,11 @@ def dump_img(img_path:str,
              file_ext:str) -> None:
     if not os.path.exists(img_path):
         os.mkdir(img_path)
-    open(img_path + f"/img_{page_count}.{file_ext}","wb").write(
-        open(input_path,"rb").read()
-    )   
+    # open(img_path + f"/img_{page_count}.{file_ext}","wb").write(
+    #     open(input_path,"rb").read()
+    # )   
+    img = Image.open(input_path)
+    img.save(img_path + f"/img_{page_count}.{file_ext}", quality=quality)
 
 if not os.path.exists(OUTFILE_PATH):
     os.mkdir(OUTFILE_PATH)
@@ -217,7 +223,8 @@ for root,dirs,files in os.walk(os.getcwd(),topdown=True):
         file_ext = os.path.splitext(file)[1]
         if file_ext not in img_ext:
             continue
-        file_ext = file_ext.replace(".","")
+        # file_ext = file_ext.replace(".","")
+        file_ext = "jpg"
         pbar_files.set_description('Processing '+file)
         input_file_names = f"{root}/{file}"
         input_file_list.append(input_file_names)

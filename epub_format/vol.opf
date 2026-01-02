@@ -33,7 +33,7 @@
   </manifest>
   <spine page-progression-direction="rtl" toc="ncx">
 {spine_page_main}
-    <itemref idref="nav.xhtml" linear="no"/>
+    <!-- <itemref idref="nav.xhtml" linear="no"/> -->
   </spine>
   <guide>
     <reference type="cover" title="封面" href="image/cover.{file_ext}"/>

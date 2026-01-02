@@ -1,10 +1,7 @@
 import os
 import re
-import ebooklib
-from ebooklib import epub
 import argparse as parse
 from tqdm import tqdm
-import pdb
 import shutil
 import uuid
 from datetime import datetime
@@ -12,7 +9,7 @@ from PIL import Image
 
 # print(os.getcwd())
 img_ext:list = ['.webp','.bmp','.jpeg','.jpg','.png']
-quality:int = 20
+quality:int = 50
 
 #path
 OUTFILE_PATH = "./output"
@@ -191,6 +188,7 @@ def dump_img(img_path:str,
              file_ext:str) -> None:
     if not os.path.exists(img_path):
         os.mkdir(img_path)
+    size:int = os.path.getsize(input_path)
     img = Image.open(input_path)
     img = img.convert('RGB')
     img.save(img_path + f"/img_{page_count}.{file_ext}", quality=quality)

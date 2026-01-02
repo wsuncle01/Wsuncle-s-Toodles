@@ -181,10 +181,8 @@ def dump_img_cov(img_path:str,
                  file_ext:str) -> None:
     if not os.path.exists(img_path):
         os.mkdir(img_path)
-    # open(img_path + f"/cover.{file_ext}","wb").write(
-    #     open(input_path,"rb").read()
-    # )   
     img = Image.open(input_path)
+    img = img.convert('RGB')
     img.save(img_path + f"/cover.{file_ext}", quality=quality)
 
 def dump_img(img_path:str,
@@ -193,10 +191,8 @@ def dump_img(img_path:str,
              file_ext:str) -> None:
     if not os.path.exists(img_path):
         os.mkdir(img_path)
-    # open(img_path + f"/img_{page_count}.{file_ext}","wb").write(
-    #     open(input_path,"rb").read()
-    # )   
     img = Image.open(input_path)
+    img = img.convert('RGB')
     img.save(img_path + f"/img_{page_count}.{file_ext}", quality=quality)
 
 if not os.path.exists(OUTFILE_PATH):
